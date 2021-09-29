@@ -14,14 +14,21 @@ class Post extends Model
     //protected $guarded = ['id'];
 
     //method 2
-    protected $fillable = ["title","excerpt","body"];
+    //protected $fillable = ["title","excerpt","body"];
+
+    protected $guarded = [];
 
     public function category()
     {
         //There are many situations => hasOne, hasMany, belongsTo, belongsToMany
         //And post belongs to category
-        //-----> belongsTo
-        return $this->belongsTo(category::class);
+        //-----> use belongsTo
+        return $this->belongsTo(Category::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     // public function getRouteKeyName()
